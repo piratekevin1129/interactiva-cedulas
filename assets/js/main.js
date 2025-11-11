@@ -39,6 +39,7 @@ function loadMaskImg(){
                     //overBandera(document.getElementsByClassName('bandera-zona')[1],'extranjero',1)
                     unsetLoader()
                     intro_mp3.play()
+                    clickSonido()
                 }})
             }})
         }})
