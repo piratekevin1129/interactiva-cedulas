@@ -1,0 +1,65 @@
+@media (min-width: 1542px){
+    #banderas-container{
+        width: auto;
+        width: calc((205px * 3) + (50px * 2));
+        width: -moz-calc((205px * 3) + (50px * 2));
+
+        height: 384px;
+        bottom: 18%;
+    }
+
+    .bandera-container{
+        position: relative;
+        width: 205px;
+        height: 100%;
+        margin: 0px;
+    }
+    .bandera-palo{
+        position: absolute;
+        width: 15px;
+    }
+
+    /*****************************************/
+
+    #instrucciones,
+    #card{
+        width: 650px;
+        padding: 20px;
+    }
+
+    #instrucciones{
+        margin-top: 40px;
+    }
+    
+    #instrucciones h1,
+    #card .content h2{
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+    #instrucciones p,
+    #card .content p{
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+    #card .content .list{
+        margin-bottom: 5px !important;
+    }
+
+    #card-cerrar{
+        width: 35px;
+        height: 35px;
+    }
+    #card-cerrar img{
+        width: 20px;
+    }
+    #card-cerrar:hover{
+        transform: scale(1.2) translate(-50%,-50%);
+    }
+
+    .card-on{
+        animation: animacion-card-big-on 2s 1 forwards ease-out;
+    }
+    .card-off{
+        animation: animacion-card-big-off 2s 1 forwards ease-in;
+    }
+}

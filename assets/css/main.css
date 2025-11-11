@@ -1,0 +1,321 @@
+html,body{
+    position: relative;
+    display: block;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+#app-fondo{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-image: url(../images/fondo.png);
+}
+
+#banderas-container{
+    position: absolute;
+    width: auto;
+    width: calc((205px * 3) + (20px * 2));
+    width: -moz-calc((205px * 3) + (20px * 2));
+    height: 358px;
+    bottom: 20%;
+    left: 20%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.bandera-container{
+    position: relative;
+    width: 205px;
+    height: 100%;
+    margin: 0px;
+}
+.bandera-palo{
+    position: absolute;
+    width: 14px;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+}
+.bandera-palo-iluminacion{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    background-color: #ffb50f;
+    filter: blur(10px);
+    opacity: 0;
+    transform: scale(0.9, 1) translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    transition: opacity 0.25s;
+}
+.bandera-image,
+.bandera-fondo,
+.bandera-zona{
+    position: absolute;
+    width: 205px;
+    height: 150px;
+    top: 13px;
+    left: 8px;
+}
+.bandera-image img,
+.bandera-palo img{
+    position: relative;
+    display: block;
+    margin: 0px;
+    width: 100%;
+    height: auto;
+}
+.bandera-fondo > div{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    mask-size: 100% 100%;
+    mask-position: center;
+}
+
+#bandera-colombia-anim,
+#bandera-extranjero-anim,
+#bandera-venezuela-anim{
+    position: absolute;
+    width: auto;
+    height: auto;
+    margin: 0px;
+    top: 13px;
+    left: 8px;
+}
+#bandera-colombia-anim-canv,
+#bandera-extranjero-anim-canv,
+#bandera-venezuela-anim-canv{
+    position: relative;
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+}
+.bandera-zona{
+    cursor: pointer;
+}
+
+.bandera-normal .bandera-image{
+    opacity: 1;
+}
+.bandera-normal .bandera-fondo{
+    opacity: 0;
+    transition: opacity 0.25s;
+}
+.bandera-normal .bandera-animacion{
+    opacity: 0;
+    transition: opacity 0.25s;
+}
+
+.bandera-over .bandera-image{
+    opacity: 0;
+    transition: opacity 0.25s 0.25s;
+}
+.bandera-over .bandera-fondo{
+    opacity: 1;
+    transition: opacity 0.25s;
+}
+.bandera-over .bandera-animacion{
+    opacity: 1;
+    transition: opacity 0.25s;
+}
+.bandera-over .bandera-palo-iluminacion{
+    opacity: 1;
+}
+
+/*****************************************/
+#mujer{
+    position: absolute;
+    width: auto;
+    height: auto;
+    margin: 0px;
+    bottom: 0px;
+    right: 10%;
+}
+#mujer-canv{
+    position: relative;
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+#instrucciones,
+#card{
+    width: 500px;
+    height: auto;
+    box-sizing: border-box;
+    border-radius: 12px;
+    background-color: #ffffff;
+    padding: 15px;
+}
+
+#instrucciones{
+    position: relative;
+    margin: 0px auto;
+    margin-top: 20px;
+}
+#card{
+    position: absolute;
+    transform-origin: 0% 0%;
+    box-shadow: 0px 6px 20px -5px rgba(0,0,0,0.8);
+}
+
+#instrucciones h1,
+#card .content h2{
+    width: auto;
+    display: block;
+    margin: 0px;
+    padding: 0px;
+
+    font-family: 'Montserrat-Bold';
+    font-size: 21px;
+    color: #d61921;
+    font-weight: normal;
+    line-height: normal;
+    text-align: center;
+    margin-bottom: 10px;
+}
+#instrucciones p,
+#card .content p{
+    width: auto;
+    display: block;
+    margin: 0px;
+    padding: 0px;
+
+    font-family: 'Montserrat-Medium';
+    font-size: 16px;
+    color: #111111;
+    font-weight: normal;
+    line-height: normal;
+    text-align: center;
+    margin-bottom: 10px;
+}
+#card .content .list{
+    text-align: left !important;
+    margin-bottom: 2px !important;
+}
+
+#card-cerrar{
+    outline: none;
+    outline-width: 0;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #d61921;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-origin: 0% 0%;
+
+    top: 0%;
+    left: 100%;
+    transform: scale(1) translate(-50%,-50%);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+#card-cerrar img{
+    display: block;
+    width: 18px;
+    height: auto;
+    margin: 0px;
+}
+#card-cerrar:hover{
+    transform: scale(1.2) translate(-50%,-50%);
+}
+
+.card-on{
+    animation: animacion-card-on 2s 1 forwards ease-out;
+}
+.card-off{
+    animation: animacion-card-off 2s 1 forwards ease-in;
+}
+.card-offf{
+    visibility: hidden;
+}
+@keyframes animacion-card-on{
+    0%{
+        transform: rotate(90deg) translateY(-50%) scale(0.5);
+        left: 20%;
+        top: 100%;
+        top: calc(100% + 250px);
+        top: -moz-calc(100% + 250px);
+    } 
+    100%{
+        transform: rotate(0deg) translateY(-50%) scale(1);
+        left: 20%;
+        top: 50%;
+    }
+}
+
+@keyframes animacion-card-off{
+    0%{
+        transform: rotate(0deg) translateY(-50%) scale(1);
+        left: 20%;
+        top: 50%;
+    }
+    100%{
+        transform: rotate(90deg) translateY(-50%) scale(0.5);
+        left: 20%;
+        top: 100%;
+        top: calc(100% + 250px);
+        top: -moz-calc(100% + 250px);
+    } 
+}
+
+/*****big****/
+
+@keyframes animacion-card-big-on{
+    0%{
+        transform: rotate(90deg) translateY(-50%) scale(0.5);
+        left: 25%;
+        top: 100%;
+        top: calc(100% + 325px);
+        top: -moz-calc(100% + 325px);
+    } 
+    100%{
+        transform: rotate(0deg) translateY(-50%) scale(1);
+        left: 25%;
+        top: 50%;
+    }
+}
+
+@keyframes animacion-card-big-off{
+    0%{
+        transform: rotate(0deg) translateY(-50%) scale(1);
+        left: 25%;
+        top: 50%;
+    }
+    100%{
+        transform: rotate(90deg) translateY(-50%) scale(0.5);
+        left: 25%;
+        top: 100%;
+        top: calc(100% + 325px);
+        top: -moz-calc(100% + 325px);
+    } 
+}

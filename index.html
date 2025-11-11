@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banderas</title>
+
+    <link href="assets/css/fonts.css" type="text/css" rel="stylesheet" />
+    <link href="assets/css/main.css" type="text/css" rel="stylesheet" />
+    <link href="assets/css/responsive.css" type="text/css" rel="stylesheet" />
+    <link href="assets/css/botones.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/loader.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <div id="app-fondo">
+            <div id="banderas-container">
+                <div class="bandera-container bandera-normal" id="bandera-colombia">
+                    <div class="bandera-palo">
+                        <div class="bandera-palo-iluminacion"></div>
+                        <img src="assets/images/palo-colombia.png" />
+                    </div>
+                    <div class="bandera-image">
+                        <img src="assets/images/bandera-colombia.png" />
+                    </div>
+                    <div class="bandera-fondo" id="bandera-fondo-colombia"></div>
+                    <div class="bandera-animacion" id="bandera-colombia-anim">
+                        <canvas id="bandera-colombia-anim-canv"></canvas>
+                    </div>
+                    <div class="bandera-zona" onmouseover="overBandera(this,'colombia',0)" onmouseout="outBandera(this)" onclick="clickBandera(0)"></div>
+                </div>
+                <div class="bandera-container bandera-normal" id="bandera-extranjero">
+                    <div class="bandera-palo">
+                        <div class="bandera-palo-iluminacion"></div>
+                        <img src="assets/images/palo-extranjero.png" />
+                    </div>
+                    <div class="bandera-image">
+                        <img src="assets/images/bandera-extranjero.png" />
+                    </div>
+                    <div class="bandera-fondo" id="bandera-fondo-extranjero"></div>
+                    <div class="bandera-animacion" id="bandera-extranjero-anim">
+                        <canvas id="bandera-extranjero-anim-canv"></canvas>
+                    </div>
+                    <div class="bandera-zona" onmouseover="overBandera(this,'extranjero',1)" onmouseout="outBandera(this)" onclick="clickBandera(1)"></div>
+                </div>
+                <div class="bandera-container bandera-normal" id="bandera-venezuela">
+                    <div class="bandera-palo">
+                        <div class="bandera-palo-iluminacion"></div>
+                        <img src="assets/images/palo-venezuela.png" />
+                    </div>
+                    <div class="bandera-image">
+                        <img src="assets/images/bandera-venezuela.png" />
+                    </div>
+                    <div class="bandera-fondo" id="bandera-fondo-venezuela"></div>
+                    <div class="bandera-animacion" id="bandera-venezuela-anim">
+                        <canvas id="bandera-venezuela-anim-canv"></canvas>
+                    </div>
+                    <div class="bandera-zona" onmouseover="overBandera(this,'venezuela',2)" onmouseout="outBandera(this)" onclick="clickBandera(2)"></div>
+                </div>
+            </div>
+
+            <div id="mujer">
+                <canvas id="mujer-canv"></canvas>
+            </div>
+
+            <div id="instrucciones">
+                <h1>¿Qué documentos se aceptan?</h1>
+                <p>Haz clic en la bandera que corresponda a tu caso para descubrir los documentos válidos</p>
+            </div>
+
+            <div id="card" class="card-offf">
+                <div class="content">
+                    <h2>Soy colombiano</h2>
+                    <p>Se acepta la cédula de ciudadanía.</p>
+                </div>
+                <div class="content">
+                    <h2>Soy extranjero</h2>
+                    <p>Puedes presentar tu cédula de extranjería vigente o tu pasaporte vigente.</p>
+                </div>
+                <div class="content">
+                    <h2>Soy ciudadano venezolano</h2>
+                    <p>Se aceptan tres alternativas:</p>
+                    <p class="list">• Cédula de extranjería vigente
+                    <p class="list">• Pasaporte (válido incluso si está vencido hasta por 10 años)</p>
+                    <p class="list">• Permiso Temporal de Permanencia (PTP)</p>
+                </div>
+                <button id="card-cerrar" onclick="cerrarCard()">
+                    <img src="assets/images/icon-cerrar.svg" />
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="botones">
+        <button id="next-tema-btn" class="next-tema-on" onclick="clickSiguiente()"></button>
+        <button id="sonido-btn" class="sonido-off"></button>
+    </div>
+
+    <div id="loader" class="loader-on">
+        <div id="loader-img"></div>
+        <div id="loader-bar">
+            <div id="loader-bar2"></div>
+        </div>
+    </div>
+    
+    <script src="assets/js/loader.js"></script>
+    <script src="assets/js/animation.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        var background_mp3 = null;
+        var click_mp3 = null;
+        var flag2_mp3 = null;
+        var flag3_mp3 = null;
+
+        var intro_mp3 = null;
+        var colombia_mp3 = null;
+        var extranjero_mp3 = null;
+        var venezuela_mp3 = null;
+        
+        window.onload = function(){
+            loadTrack({src: 'assets/sounds/background.mp3', callBack: function(data){
+                background_mp3 = data
+                background_mp3.loop = true
+                background_mp3.volume = 0.2
+                loaderUpdate()
+
+                loadTrack({src: 'assets/sounds/click.mp3', callBack: function(data){
+                    click_mp3 = data
+                    loadTrack({src: 'assets/sounds/flag2.mp3', callBack: function(data){
+                        flag2_mp3 = data
+                        loadTrack({src: 'assets/sounds/flag3.mp3', callBack: function(data){
+                            flag3_mp3 = data
+                            flag3_mp3.loop = true
+                    
+                            loadTrack({src: 'assets/audios/intro.mp3', callBack: function(data){
+                            intro_mp3 = data
+                            loaderUpdate()
+
+                            loadTrack({src: 'assets/audios/colombia.mp3', callBack: function(data){
+                            colombia_mp3 = data
+                            loaderUpdate()
+
+                            loadTrack({src: 'assets/audios/extranjero.mp3', callBack: function(data){
+                            extranjero_mp3 = data
+                            loaderUpdate()
+
+                            loadTrack({src: 'assets/audios/venezuela.mp3', callBack: function(data){
+                            venezuela_mp3 = data
+                            loaderUpdate()
+
+
+
+                                //window.top.postMessage({'completado': false, 'alto': 507}, '*' );
+
+                                loadAnimations()
+
+                            }})
+                            }})
+                            }})
+                            }})
+                        }})
+                    }})
+                }})
+            }})
+        }
+
+        function loadAnimations(){
+            loadAnimation({
+                idname:'bandera-colombia-anim',canv:'bandera-colombia-anim-canv',
+                width:205,
+                height:150,
+                realw:'auto',realh:'auto',pos:0,total:15,
+                folder:'assets/images/bandera-borde',
+                pre:'',ext:'',extra:false,async:true,callBack:function(){
+                    loadAnimation({
+                        idname:'bandera-extranjero-anim',canv:'bandera-extranjero-anim-canv',
+                        width:205,
+                        height:150,
+                        realw:'auto',realh:'auto',pos:1,total:15,
+                        folder:'assets/images/bandera-borde',
+                        pre:'',ext:'',extra:false,async:true,callBack:function(){
+                            loadAnimation({
+                                idname:'bandera-venezuela-anim',canv:'bandera-venezuela-anim-canv',
+                                width:205,
+                                height:150,
+                                realw:'auto',realh:'auto',pos:2,total:15,
+                                folder:'assets/images/bandera-borde',
+                                pre:'',ext:'',extra:false,async:true,callBack:function(){
+                                    
+                                    var alto_mujer = parseInt((window.innerHeight*75)/100)
+                                    console.log(alto_mujer)
+
+                                    loadAnimation({
+                                        idname:'mujer',canv:'mujer-canv',
+                                        width:370,
+                                        height:720,
+                                        realw:'auto',realh:alto_mujer,pos:3,total:73,
+                                        folder:'assets/images/mujer-compress',
+                                        pre:'',ext:'-min',extra:false,async:true,callBack:function(){
+                                            getE('sonido-btn').setAttribute('onclick','clickSonido()')
+                                            loadMask()
+                                            //intro_mp3.play()
+                                        }
+                                    })
+                                }
+                            })
+                        }
+                    })
+                }
+            })
+        }
+
+        var toggle_sonido = false
+        function clickSonido(){
+            if(!toggle_sonido){
+                toggle_sonido = true
+                getE('sonido-btn').className = 'sonido-on'
+                background_mp3.play()
+            }else{
+                toggle_sonido = false
+                getE('sonido-btn').className = 'sonido-off'
+                background_mp3.pause()
+            }
+        }
+
+        function clickSiguiente(){
+            parent.nextTema()
+        }
+    </script>
+</body>
+</html>

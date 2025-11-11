@@ -1,0 +1,64 @@
+#botones{
+    position: absolute;
+    width: 100px;
+    height: auto;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: flex-end;   
+}
+
+#next-tema-btn,
+#sonido-btn{
+    position: relative;
+    outline: none;
+    outline-width: 0px;
+    display: block;
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    background-color: #ffffff;
+    cursor: pointer;
+    box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.3);
+}
+#next-tema-btn{
+    margin-right: 10px;
+}
+#next-tema-btn:hover,
+#sonido-btn:hover{
+    background-color: #ffffff;
+}
+
+#next-tema-btn::after,
+#sonido-btn::after{
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: #58595b;
+    mask-size: 100%;
+    -webkit-mask-size: 100%;
+    top: 7.5px;
+    left: 7.5px;
+}
+
+.sonido-off::after{
+    mask-image: url(../images/icon-sonido-off.svg);
+    -webkit-mask-image: url(../images/icon-sonido-off.svg);
+}
+.sonido-on::after{
+    mask-image: url(../images/icon-sonido-on.svg);
+    -webkit-mask-image: url(../images/icon-sonido-on.svg);
+}
+#next-tema-btn::after{
+    mask-image: url(../images/icon-next.svg);
+    -webkit-mask-image: url(../images/icon-next.svg);
+}
+
+.next-tema-off{
+    display: none !important;
+}
+.next-tema-on{
+    display: block;
+}
