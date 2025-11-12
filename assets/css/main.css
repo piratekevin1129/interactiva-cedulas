@@ -67,6 +67,17 @@ html,body{
     left: 50%;
     transition: opacity 0.25s;
 }
+.bandera-palo-sombra{
+    position: absolute;
+    width: 50px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,0.2);
+    filter: blur(2px);
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
 .bandera-image,
 .bandera-fondo,
 .bandera-zona{
